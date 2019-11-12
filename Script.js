@@ -47,6 +47,7 @@ var yPos = 150;
 var grav = 2;
 
 function draw() {
+    let toDraw = 1;
     ctx.drawImage(bg, 0, 0);
 
     for(var i = 0; i < pipe.length; i++) {
@@ -67,7 +68,9 @@ function draw() {
         && xPos <=pipe[i].x + pipeUp.width
         && (yPos <=pipe[i].y + pipeUp.height
                 || yPos + bird.height >= pipe[i].y + pipeUp.height + gap) || yPos + bird.height >= cvs.height - fg.height )  {
+            toDraw = 0;
             location.reload(true);// Перезагрузка страницы 
+            
         }
 
         if(pipe[i].x == 5){
@@ -84,8 +87,8 @@ function draw() {
     ctx.fillStyle = "#000";
     ctx.font = "25px Verdana";
     ctx.fillText("Прогулы: " + score, 10, cvs.height - 20);
-
-    requestAnimationFrame(draw);
+    if(toDraw)
+        requestAnimationFrame(draw);
 }
 
 pipeBottom.onload = draw;
