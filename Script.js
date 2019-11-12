@@ -19,6 +19,7 @@ var score_audio = new Audio();
 var death_audio = new Audio();
 
 zag_audio.src = "audio/zag.mp3";
+zag_audio.volume = 0.6;
 score_audio.src = "audio/score.mp3";
 death_audio.src = "audio/death.mp3";
 
